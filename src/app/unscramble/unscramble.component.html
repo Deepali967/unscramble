@@ -1,0 +1,28 @@
+<div class="unscramble-component">
+  <div class="rows" *ngFor="let row of scrambledWord?.userWord | keyvalue">
+    <div
+      class="columns"
+      (click)="
+        unselectWord(
+          scrambledWord?.userWord[row.key][column.key],
+          row.key,
+          column.key
+        )
+      "
+      *ngFor="let column of scrambledWord?.userWord[row.key] | keyvalue"
+    >
+      {{ scrambledWord?.userWord[row.key][column.key].id }}
+    </div>
+  </div>
+
+  <div class="options">
+    <div
+      class="option"
+      (click)="prepareUserWord(option, index)"
+      [class.hidden]="option.selected"
+      *ngFor="let option of scrambledWord?.word; let index = index"
+    >
+      <div class="text">{{ option.id }}</div>
+    </div>
+  </div>
+</div>

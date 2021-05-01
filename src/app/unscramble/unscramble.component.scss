@@ -1,0 +1,45 @@
+.unscramble-component {
+  height: 100%;
+  width: 100%;
+  background: brown;
+  color: #fff;
+
+  .rows {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.6rem 0;
+    .columns {
+      height: 3rem;
+      width: 3rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.3rem;
+      border: 1px solid #fff;
+    }
+  }
+
+  .options {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .option {
+      height: 3rem;
+      width: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.3rem;
+      border: 1px solid #fff;
+      &.hidden {
+        .text {
+          display: none;
+        }
+      }
+    }
+  }
+}
