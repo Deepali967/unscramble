@@ -32,14 +32,14 @@ export class UnscrambleComponent implements OnInit {
 
   createUserWord() {
     this.scrambledWord.userWord = {};
-    this.word.wordLength.forEach((word, i) => {
-      this.scrambledWord.userWord[i] = this.addUserWord(word);
+    this.word.wordLength.forEach((wordLength, i) => {
+      this.scrambledWord.userWord[i] = this.addUserWord(wordLength);
     });
   }
 
-  addUserWord(value) {
+  addUserWord(length) {
     var userWordobj = {};
-    for (var i = 0; i < value; i++) {
+    for (var i = 0; i < length; i++) {
       userWordobj[i] = '';
     }
     return userWordobj;
@@ -95,10 +95,7 @@ export class UnscrambleComponent implements OnInit {
       id: option.id,
     };
 
-    if (
-      Object.keys(this.scrambledWord.userWord[nextValue['key']]).length - 1 ===
-      nextValue['keyValue']
-    ) {
+    if (!this.findEmptySpaceInColumn(nextValue['key'])) {
       this.validate(nextValue['key']);
     }
   }
