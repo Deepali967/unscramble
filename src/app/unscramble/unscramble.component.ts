@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnscrambleComponent implements OnInit {
   word = {
-    wordLength: [5, 6],
-    word: 'ahrryoprter',
+    wordLength: [5, 6, 9],
+    word: 'ahrryoprteryurthngnh',
     answer: ['harry'],
   };
 
@@ -99,7 +99,7 @@ export class UnscrambleComponent implements OnInit {
       Object.keys(this.scrambledWord.userWord[nextValue['key']]).length - 1 ===
       nextValue['keyValue']
     ) {
-      this.validate();
+      this.validate(nextValue['key']);
     }
   }
 
@@ -115,7 +115,11 @@ export class UnscrambleComponent implements OnInit {
     )[0].selected = false;
   }
 
-  validate() {
-    console.log('true');
+  validate(key) {
+    console.log(
+      Object.values(this.scrambledWord.userWord[key])
+        .map((word: any) => (word.value = word.id))
+        .join('')
+    );
   }
 }
